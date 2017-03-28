@@ -100,7 +100,7 @@ void run_editor(const char *fileptr){
   box(edit_win, 0, 0);
   string text = load_file(filename);
   globalVec = str_to_vector(text, max_x);
-  data_to_screen(text, edit_win, edit_h, edit_w);
+  data_to_screen(text, edit_win, max_y, max_x);
   wrefresh(term_win);
   wrefresh(edit_win);
   int key = 1;
@@ -127,7 +127,7 @@ void run_editor(const char *fileptr){
     refresh();
     wrefresh(term_win);
     touchwin(term_win);
-    data_to_screen(text, edit_win, edit_h, edit_w);
+    data_to_screen(text, edit_win, max_y, max_x);
     refresh();
     wrefresh(edit_win);
     touchwin(term_win);
@@ -143,7 +143,7 @@ void run_editor(const char *fileptr){
       mvwprintw(term_win, 0, (term_w/2)-8, "CSCI 1730 Editor");
       mvwprintw(term_win, (term_h-1), 0, (filename + " (saved)").c_str());
       refresh();
-      data_to_screen(text, edit_win, edit_h, edit_w);
+      data_to_screen(text, edit_win, max_y, max_x);
       wrefresh(edit_win);
     }
     else{
@@ -154,7 +154,7 @@ void run_editor(const char *fileptr){
       mvwprintw(term_win, 0, (term_w/2)-8, "CSCI 1730 Editor");
       mvwprintw(term_win, (term_h-1), 0, filename.c_str());
       refresh();
-      data_to_screen(text, edit_win, edit_h, edit_w);
+      data_to_screen(text, edit_win, max_y, max_x);
       wrefresh(edit_win);
     }
     refresh();
@@ -193,7 +193,7 @@ void run_editor(const char *fileptr){
           refresh();
           wrefresh(term_win);
           text = load_file(new_filename);
-          data_to_screen(text, edit_win, edit_h, edit_w);
+          data_to_screen(text, edit_win, max_y, max_x);
           mvwprintw(term_win, (term_h-1), 0, new_filename.c_str());
           filename = new_filename;
           //wmove(edit_win, ey, ex);
@@ -208,7 +208,7 @@ void run_editor(const char *fileptr){
 	  refresh();
           wrefresh(term_win);
           touchwin(term_win);
-          data_to_screen(text, edit_win, edit_h, edit_w);
+          data_to_screen(text, edit_win, max_y, max_x);
 
         }
       }
@@ -219,7 +219,7 @@ void run_editor(const char *fileptr){
         }
         save_file(filename, text);
         saved = true;
-        data_to_screen(text, edit_win, edit_h, edit_w);
+        data_to_screen(text, edit_win, max_y, max_x);
 
         wclear(edit_win);
         box(edit_win, 0, 0);
@@ -228,7 +228,7 @@ void run_editor(const char *fileptr){
         wrefresh(term_win);
         touchwin(term_win);
         mvwprintw(term_win, (term_h-1), 0, filename.c_str());
-        data_to_screen(text, edit_win, edit_h, edit_w);
+        data_to_screen(text, edit_win, max_y, max_x);
         refresh();
         wrefresh(edit_win);
         touchwin(term_win);
@@ -238,14 +238,14 @@ void run_editor(const char *fileptr){
         filename += show_saveas_window(menu_h, menu_w, menu_y, menu_x);
         save_file(filename, text);
         saved = true;
-        data_to_screen(text, edit_win, edit_h, edit_w);
+        data_to_screen(text, edit_win, max_y, max_x);
         wclear(edit_win);
         box(edit_win, 0, 0);
 
         refresh();
         wrefresh(term_win);
         touchwin(term_win);
-        data_to_screen(text, edit_win, edit_h, edit_w);
+        data_to_screen(text, edit_win,max_y, max_x);
         mvwprintw(term_win, (term_h-1), 0, filename.c_str());
         refresh();
         wrefresh(edit_win);
@@ -274,7 +274,7 @@ void run_editor(const char *fileptr){
             refresh();
             wrefresh(term_win);
             touchwin(term_win);
-            data_to_screen(text, edit_win, edit_h, edit_w);
+            data_to_screen(text, edit_win, max_y, max_x);
           }
         }
       }
@@ -348,7 +348,7 @@ void run_editor(const char *fileptr){
     refresh();
     wrefresh(term_win);
     touchwin(term_win);
-    data_to_screen(text, edit_win, edit_h, edit_w);
+    data_to_screen(text, edit_win,max_y, max_x);
     refresh();
     wrefresh(edit_win);
     touchwin(term_win);
